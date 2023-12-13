@@ -1,7 +1,12 @@
-const port = 5000;
 const express = require('express');
+const dotenv = require('dotenv');
+dotenv.config();
+const port = process.env.PORT || 5000;
 const app = express();
 const products = require('./data/products')
+const connectDB = require('./config/db')
+
+connectDB();
 
 app.get('/api/products',(req,res)=>(
     res.json(products)
