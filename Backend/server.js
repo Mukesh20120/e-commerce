@@ -6,9 +6,10 @@ const app = express();
 const productRoute = require('./routes/productRoutes')
 const connectDB = require('./config/db')
 const  { notFound, errorHandler } = require('./middleware/errorMiddleware')
+const cors = require("cors");
 
 connectDB();
-
+app.use(cors());
 app.use('/api/products',productRoute);
 
 app.use(notFound);
